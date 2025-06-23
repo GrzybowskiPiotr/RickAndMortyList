@@ -1,0 +1,15 @@
+name: PR Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    branches:
+      - main
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'AI_CODE_REVIEW')
+    steps:
+      - name: Greeting
+        run: echo "Hellow World"
