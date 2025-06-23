@@ -2,8 +2,6 @@
 
 ## Example project for AI Code reviews github workflows
 
-### This is a minimal setup for a React application using TypeScript and Vite, with ESLint configured for code quality checks.
-
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
