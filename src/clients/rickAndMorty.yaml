@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Rick and Morty API
+  description: Access information about characters from Rick and Morty.
+  version: 1.0.0
+servers:
+  - url: https://rickandmortyapi.com/api
+paths:
+  /character:
+    get:
+      operationId: getCharacters
+      summary: Get a list of characters
+      responses:
+        '200':
+          description: A list of characters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharacterListResponse'
+components:
+  schemas:
+    CharacterListResponse:
+      type: object
+      properties:
+        info:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: The total number of characters.
+            pages:
+              type: integer
+              description: The total number of pages.
+            next:
+              type: string
+              nullable: true
+              description: URL of the next page.
+            prev:
+              type: string
+              nullable: true
+              description: URL of the previous page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Character'
+    Character:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The id of the character.
+        name:
+          type: string
+          description: The name of the character.
+        status:
+          type: string
+          description: The status of the character (Alive, Dead or unknown).
+        species:
+          type: string
+          description: The species of the character.
+        type:
+          type: string
+          description: The type or subspecies of the character.
+        gender:
+          type: string
+          description: The gender of the character.
+        origin:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the character's origin location.
+            url:
+              type: string
+              description: Link to the character's origin location.
+        location:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the character's last known location.
+            url:
+              type: string
+              description: Link to the character's last known location.
+        image:
+          type: string
+          description: Link to the character's image.
+        episode:
+          type: array
+          items:
+            type: string
+            description: List of episodes in which this character appeared.
+        url:
+          type: string
+          description: Link to the character's own URL endpoint.
+        created:
+          type: string
+          format: date-time
+          description: Time at which the character was created in the database.
