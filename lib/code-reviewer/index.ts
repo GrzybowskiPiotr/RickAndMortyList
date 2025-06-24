@@ -5,7 +5,7 @@ import {conductCodeReview} from "./src/openai-clinet.js";
 
 const config = {
   openApiKey: process.env["OPENAI_API_KEY"],
-  githubKey: process.env["GITHUB_TOKEN"],
+  githubKey: process.env["GH_TOKEN"],
   repoNameOwner: process.env["GITHUB_REPO_NAME_OWNER"],
   issueNo: parseInt(process.env["ISSUE_NUMBER"] as string),
 };

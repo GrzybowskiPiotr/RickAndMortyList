@@ -6,7 +6,7 @@ on:
     branches: [Master, main]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GITHUB_REPO_NAME_OWNER: ${{ github.repository }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   ISSUE_NUMBER: ${{ github.event.pull_request.number }}
