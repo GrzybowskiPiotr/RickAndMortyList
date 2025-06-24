@@ -24,13 +24,6 @@ jobs:
       - name: Configure node
         uses: actions/setup-node@v4
 
-      - name: Create .env file
-        run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}" >> .env
-          echo "GITHUB_REPO_NAME_OWNER=${{ github.repository }}" >> .env
-           echo "ISSUE_NUMBER=${{ github.event.pull_request.number }}" >> .env
-
       - name: Print git diff
         run: git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} >> lib/code-reviewer/diff.txt
       - name: Conduct Code Review

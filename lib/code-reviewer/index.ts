@@ -1,4 +1,3 @@
-import "dotenv/config";
 import {readFileSync} from "fs";
 import {commentOnPullRequest} from "./src/github-client.js";
 import {conductCodeReview} from "./src/openai-clinet.js";
