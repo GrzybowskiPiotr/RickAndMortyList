@@ -12,7 +12,7 @@ const config = {
 async function main() {
   if (!config.openApiKey || !config.githubKey || !config.repoNameOwner) {
     throw new Error(
-      "Missing env varables. API kesy & repo metadata must be provided."
+      "Missing env varables. API keys & repo metadata must be provided."
     );
   }
 

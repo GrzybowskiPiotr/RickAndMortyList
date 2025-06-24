@@ -3,7 +3,7 @@ name: PR Code Review
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled]
-    branches: [Master, main]
+    branches: [main]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
