@@ -3,8 +3,13 @@ name: PR Code Review
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled]
-    branches:
-      - main
+    branches: [Master, main]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_REPO_NAME_OWNER: ${{ github.repository }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  ISSUE_NUMBER: ${{ github.event.pull_request.number }}
 
 jobs:
   code-review:
@@ -16,5 +21,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
       - name: Print git diff
-        run: git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
+        run: git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} >> lib/code-reviewer/diff.txt
+      - name: Conduct Code Review
+        run: cd lib/code-reviewer && npm ci && npm run build && npm run review
